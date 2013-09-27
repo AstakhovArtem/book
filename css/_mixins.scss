@@ -1,0 +1,150 @@
+@mixin size($width, $height) {
+	width: $width;
+	height: $height;
+}
+@mixin clearfix() {
+	& {
+		*zoom: 1;
+	}
+	&:before,
+	&:after {
+		content: "";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+@mixin box-sizing($box-model) {
+	-webkit-box-sizing: $box-model; // Safari <= 5
+	   -moz-box-sizing: $box-model; // Firefox <= 19
+	           box-sizing: $box-model;
+}
+
+
+
+// Single side border-radius
+
+@mixin border-top-radius($radius) {
+	-webkit-border-top-right-radius: $radius;
+	border-top-right-radius: $radius;
+	-webkit-border-top-left-radius: $radius;
+	border-top-left-radius: $radius;
+	background-clip: padding-box;
+}
+@mixin border-right-radius($radius) {
+	-webkit-border-bottom-right-radius: $radius;
+	border-bottom-right-radius: $radius;
+	-webkit-border-top-right-radius: $radius;
+	border-top-right-radius: $radius;
+	background-clip: padding-box;
+}
+@mixin border-bottom-radius($radius) {
+	-webkit-border-bottom-right-radius: $radius;
+	border-bottom-right-radius: $radius;
+	-webkit-border-bottom-left-radius: $radius;
+	border-bottom-left-radius: $radius;
+	background-clip: padding-box;
+}
+@mixin border-left-radius($radius) {
+	-webkit-border-bottom-left-radius: $radius;
+	border-bottom-left-radius: $radius;
+	-webkit-border-top-left-radius: $radius;
+	border-top-left-radius: $radius;
+	background-clip: padding-box;
+}
+
+@mixin opacity($opacity) {
+	opacity: $opacity;
+	$opacity-ie: $opacity * 100;
+	filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+@mixin center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@mixin font-size($sizeValue: 12 ){
+	font-size: $sizeValue + px; //fallback for old browsers
+	font-size: (0.125 * $sizeValue) + rem;
+}
+
+@mixin inline-block() {
+	display: -moz-inline-stack;
+	display: inline-block;
+	vertical-align: top;
+	zoom: 1;
+	*display: inline;
+}
+
+@mixin line-height($heightValue: 12 ){
+	line-height: $heightValue + px; //fallback for old browsers
+	line-height: (0.125 * $heightValue) + rem;
+}
+
+@mixin placeholder-color($color){
+	&.placeholder{
+		color: $color
+	}
+
+	&:-moz-placeholder{
+		color: $color
+	}
+
+	&::-webkit-input-placeholder{
+		color: $color
+	}
+
+	&:-ms-input-placeholder{
+		color: $color
+	}
+}
+
+@mixin abs-pos ($top: auto, $right: auto, $bottom: auto, $left: auto) {
+	top: $top;
+	right: $right;
+	bottom: $bottom;
+	left: $left;
+	position: absolute;
+}
+
+@mixin breakpoint($point) {
+	@if $point == large {
+		@media (min-width: 64.375em) { @content; }
+	}
+	@else if $point == medium {
+		@media (min-width: 50em) { @content; }
+	}
+	@else if $point == small {
+		@media (min-width: 37.5em)  { @content; }
+	}
+}
+
+
+@mixin abs-center($width, $height, $top: 0, $right: 0, $bottom: 0, $left: 0) {
+	width: $width;
+	height: $height;
+	overflow: auto;
+	margin: auto;
+	position: absolute;
+	top: $top;
+	right: $right;
+	bottom: $bottom;
+	left: $left;
+}
+
+@mixin abs-center-fixed($width, $height, $z-index, $top: 0, $right: 0, $bottom: 0, $left: 0){
+	width: $width;
+	height: $height;
+	overflow: auto;
+	margin: auto;
+	position: fixed;
+	top: $top;
+	right: $right;
+	bottom: $bottom;
+	left: $left;
+	z-index: $z-index;
+}

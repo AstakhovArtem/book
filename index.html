@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Book</title>
+	<link rel="stylesheet" href="./css/style.css">
+	<script type="text/javascript" src="./js/lib/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="./js/lib/underscore-min.js"></script>
+	<script type="text/javascript" src="./js/lib/backbone-min.js"></script>
+	<script type="text/javascript" src="./js/lib/json2.js"></script>
+
+
+</head>
+<body>
+<div class="wrapper">
+	<!-- <div class="books-block"></div> -->
+
+<script id="books" type="text/template">
+	<div class="img-container">
+		<img src="<%= img %>" alt="<%= title %>"/>
+	</div>
+	<div class="info">
+		<h2><%= title %></h2>
+	</div>
+	<div class="rollover"></div>
+</script>
+<script type="text/template" id="pages">
+	<% for (var key in pages) { %>
+		<section class="list-element">
+			<div class="img-container">
+				<img src="<%=pages[key].img %>" alt="<%=title %>"/>
+			</div>
+			<div class="info">
+				<h2><%=title %></h2>
+			</div>
+		</section>
+	<% } %>
+</script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript" src="./js/lib/jquery.overscroll.js"></script>
+<script>
+$(function(){
+	$(".wrapper").overscroll({
+		/*showThumbs: false,
+		wheelDirection: 'horizontal'*/
+		showThumbs: true,
+		direction: "horizontal",
+		wheelDirection: 'vertical',
+		driftDecay: 0
+	});
+});
+</script>
+<script type="text/javascript" src="./js/app/app.js"></script>
+</body>
+</html>

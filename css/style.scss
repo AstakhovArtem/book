@@ -1,0 +1,178 @@
+@import "compass/reset";
+@import "compass/css3";
+@import "compass/utilities";
+@import "./mixins";
+
+html, body {
+	height: 100%;
+}
+body {
+	background: #eee;
+	overflow: hidden;
+}
+
+$widthElement: 256px;
+$heightElement: 695px;
+
+$heightImg: 380px;
+$textColor: #464646;
+
+$widthPage: 350px;
+
+.wrapper {
+	overflow: hidden;
+}
+.books-block, .pages-block {
+	padding: 15% 0 0 15%;
+	background: url('../img/bg.top.asset01.png') repeat-x, url('../img/bg.bottom.asset01.png') repeat-x bottom center;
+	@include clearfix();
+}
+
+.list-element {
+	width: $widthElement;
+	height: $heightElement;
+	cursor: pointer;
+	float: left;
+	color: $textColor;
+	background: url('../img/list.product.divider.png') no-repeat top right;
+	z-index: 2;
+
+	.rollover {
+		display: none;
+		position: absolute;
+		content: '';
+		background: url('../img/listnode.rollover.over.png') no-repeat center center, rgba( #000, .5);
+		width: 50px;
+		height: 50px;
+		top: 25%;
+		left: 50%;
+		margin-left: -25px;
+		@include border-radius(25px);
+		-webkit-animation: animRollover .3s;
+		   -moz-animation: animRollover .3s;
+		       -o-animation: animRollover .3s;
+		           animation: animRollover .3s;
+	}
+
+	&:hover .rollover {
+		display: block;
+	}
+}
+.img-container {
+	width: $widthElement;
+	height: $heightImg;
+}
+
+.books-block {
+	.list-element {
+		position: relative;
+	}
+	.img-container {
+		position: relative;
+
+		img {
+			left: 10px;
+			position: absolute;
+			bottom: 0;
+		}
+	}
+}
+
+.info {
+	margin: 18px 0 0 10px;
+	padding: 14px 10px 0 0;
+	background: url('../img/text.splitter.inverted.png') no-repeat;
+	background-position: 15px 0px;
+
+	h2 {
+		font-family: Arial;
+		font-size: 16px;
+		text-align: center;
+		color: $textColor;
+		text-transform: uppercase;
+	}
+}
+
+.pages-block {
+	min-width: 100%;
+
+	.list-element {
+		width: $widthPage;
+
+		.img-container {
+			width: $widthPage;
+			height: auto;
+			margin-top: 35px;
+
+			img {
+				width: 326px;
+				padding: 0 0 0 12px;
+			}
+		}
+
+		.info {
+			background-position: center 0px;
+
+			h2 {
+				text-transform: none;
+			}
+		}
+	}
+}
+
+@-webkit-keyframes animRollover {
+	0% {
+		@include  opacity(0);
+		-webkit-transform: rotate(180deg);
+	}
+	50% {
+		@include opacity(0.5);
+	}
+	100% {
+		@include opacity(1);
+		-webkit-transform: rotate(0deg);
+	}
+}
+
+
+@-moz-keyframes animRollover {
+	0% {
+		@include  opacity(0);
+		-moz-transform: rotate(180deg);
+	}
+	50% {
+		@include opacity(0.5);
+	}
+	100% {
+		@include opacity(1);
+		   -moz-transform: rotate(0deg);
+	}
+}
+
+@-o-keyframes animRollover {
+	0% {
+		@include  opacity(0);
+		-o-transform: rotate(180deg);
+	}
+	50% {
+		@include opacity(0.5);
+	}
+	100% {
+		@include opacity(1);
+		-o-transform: rotate(0deg);
+	}
+}
+
+@keyframes animRollover {
+	0% {
+		@include  opacity(0);
+		transform: rotate(180deg);
+	}
+	50% {
+		@include opacity(0.5);
+	}
+	100% {
+		@include opacity(1);
+		transform: rotate(0deg);
+	}
+}
